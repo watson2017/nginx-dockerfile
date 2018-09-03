@@ -78,10 +78,9 @@ RUN set -x \
 
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log \
-    && rm -rf /etc/nginx/nginx.conf \
-    && ln -s /tmp/nginx.conf  /etc/nginx/nginx.conf \
+    && rm -rf /etc/nginx/nginx.conf ; rm -rf /etc/nginx/conf.d\
     && mkdir /tmp/conf.d   \
-    && ln -s /tmp/conf.d     /etc/nginx/  \
+    && ln -s /tmp/nginx.conf  /etc/nginx/nginx.conf ; ln -s /tmp/conf.d /etc/nginx/  \
     && /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo 'Asia/Shanghai' >/etc/timezone 
 
